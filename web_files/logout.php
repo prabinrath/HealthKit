@@ -1,0 +1,10 @@
+<?php
+session_start();
+unset($_SESSION["doc_id"]);
+unset($_SESSION["email"]);
+unset($_SESSION["name"]);
+unset($_SESSION["device_id"]);
+session_destroy();
+session_unset();
+header('location:index.php');
+?>
