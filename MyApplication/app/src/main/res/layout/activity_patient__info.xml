@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+
+    android:id="@+id/activity_patient_info"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/activity_patient_info_doctor"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="71dp"
+        android:gravity="center"
+        android:background="@color/colorTextView"
+         />
+
+    <TextView
+        android:id="@+id/activity_patient_info_prescription"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/activity_patient_info_doctor"
+        android:layout_alignStart="@id/activity_patient_info_doctor"
+        android:layout_alignLeft="@id/activity_patient_info_doctor"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:background="@color/colorTextView"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>
