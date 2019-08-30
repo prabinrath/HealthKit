@@ -16,7 +16,7 @@ if (!empty($name) && !empty($password_again) && !empty($password) && !empty($ema
     $count=mysqli_num_rows($query1);
 	if(mysqli_num_rows($query1)==0){				
 			   
-			$query=mysqli_query($con,"INSERT INTO Doctor(doctor_name, emailid, password, phone) values('$name', '$email', '$password','$phone_no')");
+			$query=mysqli_query($con,"INSERT INTO Doctor(doctor_name, email, password, phone) values('$name', '$email', '$password','$phone_no')");
 			if($query){
 				
 			  //$_SESSION['reg_suc']="You have Successfully registered.";

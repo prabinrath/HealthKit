@@ -2,6 +2,14 @@ from websocket_server import WebsocketServer
 from threading import Thread
 import socket
 import time
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  passwd="",
+  database="anlab"
+)
 
 bufferSize  = 1024
 
@@ -20,7 +28,21 @@ def recieve_data():
 		data = UDPS.recvfrom(bufferSize)[0]
 		data = data.split('#')
 		msg[data[0]] = data[1]
-		print msg
+		print "Recieved Data"
+		print data
+		dev_id= data[0]
+		sensor_data= data[1].split("$")
+		brain_delta= sensor_data[0]
+		brain_theta = sensor_data[1]
+		pulse = sensor_data[2]
+		temp = sensor_data[3]
+		mycursor = mydb.cursor()
+		sql = "INSERT INTO device_data (device_id, brain_data_delta, brain_data_theta, temperature, pulse) VALUES (%s, %s, %s, %s, %s)" 
+		val = (dev_id, brain_delta, brain_theta, temp, pulse)
+		mycursor.execute(sql, val)
+		mydb.commit()
+		print(mycursor.rowcount, "row was inserted.") 
+		
 
 def new_client(client, server):
 	global clients

@@ -59,26 +59,27 @@ $_SESSION['pname'] = $query_row['patient_name'];
 			window.onload = function () {
 			
 			var dev= $('#chartid').val();
-			 ws = new WebSocket("ws://10.42.0.1:25852/");
+			 ws = new WebSocket("ws://192.168.0.113:25852/");
 			
 			setInterval(function(){
                ws.send(dev);
             },500);
 			
 			ws.onmessage = function(e) {
+				console.log(e)
 	   			d=e.data;
 	   			pd = d.split("$");
 	    			d1= pd[0];
 	    			d2 =pd[1];
 	    			d3= pd[2];
 	    			d4 =pd[3];
-	    			d5 =pd[4]
+	    			//d5 =pd[4]
 	    			d1 = parseFloat(d1);
 	    			d2 = parseFloat(d2);
 	    			d3 = parseFloat(d3);
 	    			d4 = parseFloat(d4);
-	    			d5 = parseFloat(d5);
-	   console.log(d1+" "+d2+" "+d3+" "+d4+" "+d5);
+	    			//d5 = parseFloat(d5);
+	   console.log(d1+" "+d2+" "+d3+" "+d4+" ");
     				};
       
 			var dps = [];
@@ -96,17 +97,17 @@ $_SESSION['pname'] = $query_row['patient_name'];
 				animationEnabled: true,
 				theme: "light2",
 				title :{
-					text: "Temperature"
+					text: "Attention"
 				},
 				axisY: {
-				minimum:-100,
-	         maximum:100,
-					title: "Temperature",
+				minimum:0,
+	         maximum:500,
+					title: "Attention",
 					includeZero: false
 				},
             axisX: {
             		minimum:0,
-	    				maximum:800,
+	    				maximum:500,
 					title: "Time",
 					//includeZero: false
 				},
@@ -126,17 +127,17 @@ $_SESSION['pname'] = $query_row['patient_name'];
 				animationEnabled: true,
 				theme: "light2",
 				title :{
-					text: "Heart Rate"
+					text: "Meditation"
 				},
 				axisY: {
-				minimum:-100,
-	    maximum:100,
-					title: "Heart Rate",
+				minimum:0,
+	    maximum:500,
+					title: "Meditation",
 					includeZero: false
 				},
 				axisX: {
 				minimum:0,
-	    maximum:800,
+	    maximum:500,
 					title: "Time",
 					//includeZero: false
 				},
@@ -161,13 +162,13 @@ $_SESSION['pname'] = $query_row['patient_name'];
 				},
 				axisY: {
 				minimum:-100,
-	    maximum:100,
+	    maximum:300,
 					title: "Blood Pressure",
 					includeZero: false
 				},
 				axisX: {
 				minimum:0,
-	    maximum:800,
+	    maximum:500,
 					title: "Time",
 					//includeZero: false
 				},
@@ -188,17 +189,17 @@ $_SESSION['pname'] = $query_row['patient_name'];
 				animationEnabled: true,
 				theme: "light2",
 				title :{
-					text: "Glucose"
+					text: "Temperature"
 				},
 				axisY: {
 				   minimum:-100,
-	    			maximum:100,
-					title: "Glucose",
+	    			maximum:200,
+					title: "Temperature",
 					includeZero: false
 				},
 				axisX: {
 					minimum:0,
-	    			maximum:800,
+	    			maximum:500,
 					title: "Time",
 					//includeZero: false
 				},

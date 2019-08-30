@@ -7,7 +7,7 @@ $doc_id = $_SESSION['doc_id'];
 
 if (!empty($device_id) && !empty($prescription)  )
 { 
-		$query1 ="SELECT * FROM Prescription WHERE device_id='$device_id'";
+	$query1 ="SELECT * FROM Prescription WHERE device_id='$device_id'";
         $query1_run=mysqli_query($con,$query1);
         $query_row=mysqli_fetch_array($query1_run);
         
